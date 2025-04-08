@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="OnlineFoodDelivery.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Styles/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+                <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand nav-link" href="<%= GetRouteUrl("HomeRoute", null) %>">Online Food Delivery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= GetRouteUrl("HomeRoute", null) %>">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= GetRouteUrl("ProductsRoute", null) %>">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= GetRouteUrl("CartRoute", null) %>">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= GetRouteUrl("ContactRoute", null) %>">Contact Us</a>
+                </li>
+                <asp:PlaceHolder runat="server" ID="adminLink" Visible="false">
+                            <li class="nav-item">
+                                <a class="nav-link" href="AdminDashboard.aspx">Admin Management</a>
+                            </li>
+                        </asp:PlaceHolder>
+            </ul>
+                   
+            <asp:LoginView runat="server">
+                <LoggedInTemplate>
+                    <asp:LoginName runat="server" FormatString="Welcome, {0}!" CssClass="text-white me-3"/>
+                    <asp:Button runat="server" Text="Logout" CssClass="btn btn-outline-light" OnClick="btnLogout_Click"/>
+                </LoggedInTemplate>
+                <AnonymousTemplate>
+                    <a href="<%= GetRouteUrl("LoginRoute", null) %>" class="btn btn-outline-light me-2">Login</a>
+                    <a href="<%= GetRouteUrl("RegisterRoute", null) %>" class="btn btn-outline-light me-2">Register</a>
+                    <a href="<%= GetRouteUrl("AdminLoginRoute", null) %>" class="btn btn-outline-light">Admin Login</a>
+                </AnonymousTemplate>
+            </asp:LoginView>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+         <footer class="text-white mt-3 pt-5 pb-4">
+    <div class="container text-md-left">
+        <div class="row text-md-left g-4">
+
+            <!-- Branding -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">QuickBite</h5>
+                <p>Delivering delicious meals to your doorstep with speed and care. Eat fresh, live better!</p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">Explore</h5>
+                <ul class="list-unstyled">
+                    <li><a href="Home.aspx" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="Products.aspx" class="text-white text-decoration-none">Menu</a></li>
+                    <li><a href="Cart.aspx" class="text-white text-decoration-none">My Cart</a></li>
+                    <li><a href="Contact.aspx" class="text-white text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & App Info -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase fw-bold">Get in Touch</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-envelope"></i> support@quickbite.com</li>
+                    <li><i class="bi bi-telephone"></i> (416) 123-9876</li>
+                    <li><i class="bi bi-geo-alt"></i> 99 Queen St W, Toronto, ON</li>
+                </ul>
+                <div class="mt-3">
+                    <span>Follow us: </span>
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center mt-4">
+            <p class="mb-0">&copy; 2025 QuickBite. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿:root {
+    --primary-color: #6c3483; /* Deep Purple – Elegant and bold */
+    --secondary-color: #fdf2e9; /* Soft Cream – Light and gentle background */
+    --accent-color: #d68910; /* Rich Green – Energetic and vibrant */
+    --card-text-color: #1c1c1c; /* Almost Black – Sharp readability */
+    --card-bg-color: #ffffff; /* Pure White – Clean content surface */
+    --hover-accent: #d68910; /* Warm Amber – Engaging hover tone */
+    --muted-bg: #f9ebea; /* Light pink tint – Warm muted section bg */
+}
+
+/* NAVIGATION */
+.navbar {
+    background-color: var(--primary-color) !important;
+    padding: 1rem 0;
+}
+
+.nav-link {
+    color: var(--secondary-color) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+/* BUTTONS */
+.btn-primary {
+    background-color: var(--accent-color) !important;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    color: var(--secondary-color);
+}
+
+    .btn-primary:hover {
+        background-color: var(--hover-accent) !important;
+    }
+.btn:hover {
+    background-color: var(--hover-accent) !important;
+    color: #fff !important;
+}
+
+
+/* FOOTER */
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-links a {
+    color: var(--secondary-color) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .footer-links a:hover {
+        color: var(--accent-color);
+    }
+
+/* CATEGORY CARDS */
+.category-card {
+    transition: transform 0.3s;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+}
+
+    .category-card:hover {
+        transform: translateY(-5px);
+    }
+
+/* NAV TABS */
+.nav-tabs .nav-link {
+    color: var(--primary-color) !important;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        color: var(--secondary-color) !important;
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+    }
+
+    .nav-tabs .nav-link:hover {
+        background-color: rgba(185, 28, 28, 0.1);
+    }
+
+/* CARDS / PANELS */
+.card {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+}
+
+.card-header {
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    color: var(--card-text-color);
+}
+
+.card-body {
+    color: var(--card-text-color);
+}
+
+/* FORM CONTROLS */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    border: 1px solid #ccc;
+}
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 5px rgba(15, 118, 110, 0.4);
+    }
+
+/* BACKGROUND SECTIONS */
+.section-light {
+    background-color: var(--muted-bg);
+    padding: 3rem 0;
+}
+
+.section-dark {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 3rem 0;
+}
+
+/* BADGES / LABELS */
+.badge-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.badge-accent {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
